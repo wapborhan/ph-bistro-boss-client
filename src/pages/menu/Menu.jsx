@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import Cover from "../../components/shared/Cover";
 
 const Menu = () => {
   return (
@@ -6,6 +7,7 @@ const Menu = () => {
       <Helmet>
         <title>Menu</title>
       </Helmet>
+      <Cover />
     </div>
   );
 };
