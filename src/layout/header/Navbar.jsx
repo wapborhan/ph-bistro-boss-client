@@ -65,14 +65,11 @@ const NavBar = () => {
         <div className="navbar-end">
           {user ? (
             <>
-              <NavLink to="/dashboard/cart">
-                <button className="btn">
-                  CS
-                  <div className="badge badge-secondary">+{cart.length}</div>
-                </button>
+              <NavLink to="/dashboard">
+                <button className="btn">Dashboard</button>
               </NavLink>
               <button onClick={handleLogOut} className="btn btn-ghost">
-                {`(${user?.displayName})`} LogOut
+                LogOut
               </button>
             </>
           ) : (
