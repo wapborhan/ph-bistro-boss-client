@@ -14,7 +14,7 @@ const DashNav = () => {
       .catch((error) => console.log(error));
   };
   return (
-    <div className="navbar bg-base-100 shadow-md">
+    <div className="navbar bg-base-100 sticky top-0 z-40 shadow-md">
       <div className="flex-1">
         <NavLink to="/" className=" text-xl">
           Bistro Boss

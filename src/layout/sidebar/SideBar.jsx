@@ -20,18 +20,12 @@ const SideBar = () => {
   console.log(isAdmin);
   // const isAdmin = true;
   return (
-    <div className="w-64 min-h-screen bg-orange-400">
-      <ul className="menu p-4">
-        <li>
-          <NavLink to="/dashboard">
-            <FaHome></FaHome>
-            Dashboard
-          </NavLink>
-        </li>
+    <div className="lg:w-64 md:w-64 lg:min-h-screen md:min-h-screen  bg-orange-400">
+      <ul className="menu p-4 sticky top-0">
         {isAdmin ? (
           <>
             <li>
-              <NavLink to="/dashboard/adminHome">
+              <NavLink to="/dashboard/home">
                 <FaHome></FaHome>
                 Admin Home
               </NavLink>
@@ -58,6 +52,12 @@ const SideBar = () => {
               <NavLink to="/dashboard/users">
                 <FaUsers></FaUsers>
                 All Users
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard/cart">
+                <FaShoppingCart></FaShoppingCart>
+                My Cart ({cart.length})
               </NavLink>
             </li>
           </>
