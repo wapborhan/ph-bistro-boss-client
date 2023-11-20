@@ -17,7 +17,7 @@ import useAdmin from "../../hooks/useAdmin";
 const SideBar = () => {
   const [cart] = useCart();
   const [isAdmin] = useAdmin();
-  console.log(isAdmin);
+  // console.log(isAdmin);
   // const isAdmin = true;
   return (
     <div className="lg:w-64 md:w-64 lg:min-h-screen md:min-h-screen  bg-orange-400">

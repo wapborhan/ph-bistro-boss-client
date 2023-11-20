@@ -21,7 +21,7 @@ const ManageItems = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         const res = await axiosSecure.delete(`/menu/${item._id}`);
-        // console.log(res.data);
+        console.log(res.data);
         if (res.data.deletedCount > 0) {
           // refetch to update the ui
           refetch();

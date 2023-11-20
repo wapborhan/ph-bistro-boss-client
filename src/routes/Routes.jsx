@@ -7,11 +7,14 @@ import Order from "../pages/order/Order.jsx";
 import SignIn from "../pages/signin/SignIn.jsx";
 import SignUp from "../pages/signup/SignUp.jsx";
 import PrivateRoute from "./PrivateRoute.jsx";
+import AdminRoute from "./AdminRoute.jsx";
 import Cart from "../dashboard/cart/Cart.jsx";
 import Dashboard from "../dashboard/Dashboard.jsx";
 import AllUsers from "../dashboard/all-user/AllUsers.jsx";
 import AddItem from "../dashboard/add-items/AddItem.jsx";
 import ManageItems from "../dashboard/manage-items/ManageItems.jsx";
+import UpdateItems from "./../dashboard/update-items/UpdateItems.jsx";
+import Payment from "../dashboard/payment/Payment.jsx";
 
 const router = createBrowserRouter([
   {
@@ -50,44 +53,62 @@ const router = createBrowserRouter([
         path: "home",
         element: <Dashboard />,
       },
+
+      // normal user routes
       {
         path: "cart",
-        element: (
-          <PrivateRoute>
-            <Cart />
-          </PrivateRoute>
-        ),
+        element: <Cart></Cart>,
       },
       {
-        path: "users",
-        element: (
-          <PrivateRoute>
-            <AllUsers />
-          </PrivateRoute>
-        ),
+        path: "payment",
+        element: <Payment></Payment>,
       },
+      // {
+      //   path: "paymentHistory",
+      //   element: <PaymentHistory></PaymentHistory>,
+      // },
+
+      // admin only routes
       {
         path: "addItems",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <AddItem />
-          </PrivateRoute>
+          </AdminRoute>
         ),
       },
       {
         path: "manageItems",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <ManageItems />
-          </PrivateRoute>
+          </AdminRoute>
         ),
+      },
+      {
+        path: "updateItem/:id",
+        element: (
+          <AdminRoute>
+            <UpdateItems />
+          </AdminRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:3300/menu/${params.id}`),
       },
       {
         path: "bookings",
         element: (
-          <PrivateRoute>
+          <AdminRoute>
             <Dashboard />
-          </PrivateRoute>
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "users",
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
         ),
       },
     ],
