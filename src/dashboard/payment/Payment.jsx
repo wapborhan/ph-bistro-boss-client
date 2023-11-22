@@ -1,10 +1,11 @@
-// import { loadStripe } from "@stripe/stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import SectionTitle from "../../components/shared/SectionTitle";
-// import { Elements } from "@stripe/react-stripe-js";
+import { Elements } from "@stripe/react-stripe-js";
+import CheckoutForm from "./CheckoutForm";
 // import CheckoutForm from "./CheckoutForm";
 
 // TODO: add publishable key
-// const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK);
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_KEY);
 const Payment = () => {
   return (
     <div>
@@ -13,9 +14,9 @@ const Payment = () => {
         subHeading="Please pay to eat"
       ></SectionTitle>
       <div>
-        {/* <Elements stripe={stripePromise}> */}
-        {/* <CheckoutForm></CheckoutForm> */}
-        {/* </Elements> */}
+        <Elements stripe={stripePromise}>
+          <CheckoutForm />
+        </Elements>
       </div>
     </div>
   );
