@@ -24,7 +24,7 @@ const CheckoutForm = () => {
       axiosSecure
         .post("/create-payment-intent", { price: totalPrice })
         .then((res) => {
-          console.log(res.data.clientSecret);
+          // console.log(res.data.clientSecret);
           setClientSecret(res.data.clientSecret);
         });
     }
@@ -126,7 +126,7 @@ const CheckoutForm = () => {
       <button
         className="btn btn-sm btn-primary my-4"
         type="submit"
-        // disabled={!stripe || !clientSecret}
+        disabled={!stripe || !clientSecret}
       >
         Pay
       </button>
