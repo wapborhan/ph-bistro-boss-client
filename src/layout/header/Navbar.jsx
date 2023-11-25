@@ -1,17 +1,21 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../provider/AuthProvider";
-import useCart from "../../hooks/useCart";
-// import useAdmin from "../../../hooks/useAdmin";
+// import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
 
 const NavBar = () => {
   const { user, logOut } = useContext(AuthContext);
-  // const [isAdmin] = useAdmin();
-  const [cart] = useCart();
+  const [isAdmin] = useAdmin();
+  // const [cart] = useCart();
+  const navigate = useNavigate();
 
   const handleLogOut = () => {
+    navigate("/");
     logOut()
-      .then(() => {})
+      .then(() => {
+        // navigate("/");
+      })
       .catch((error) => console.log(error));
   };
   const navOptions = (
@@ -25,7 +29,20 @@ const NavBar = () => {
       <li>
         <NavLink to="/order/salad">Order Food</NavLink>
       </li>
-      <li></li>
+      {
+        // user ? 'true': 'false'
+        // user ? condition ? 'double true' : 'one true' : 'false'
+      }
+      {user && isAdmin && (
+        <li>
+          <NavLink to="/dashboard/adminHome">Dashboard</NavLink>
+        </li>
+      )}
+      {user && !isAdmin && (
+        <li>
+          <NavLink to="/dashboard/userHome">Dashboard</NavLink>
+        </li>
+      )}
     </>
   );
 
@@ -65,9 +82,6 @@ const NavBar = () => {
         <div className="navbar-end">
           {user ? (
             <>
-              <NavLink to="/dashboard">
-                <button className="btn">Dashboard</button>
-              </NavLink>
               <button onClick={handleLogOut} className="btn btn-ghost">
                 LogOut
               </button>

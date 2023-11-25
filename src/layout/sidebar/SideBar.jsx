@@ -25,7 +25,7 @@ const SideBar = () => {
         {isAdmin ? (
           <>
             <li>
-              <NavLink to="/dashboard/home">
+              <NavLink to="/dashboard/adminHome">
                 <FaHome></FaHome>
                 Admin Home
               </NavLink>
@@ -60,6 +60,12 @@ const SideBar = () => {
                 My Cart ({cart.length})
               </NavLink>
             </li>
+            <li>
+              <NavLink to="/dashboard/paymentHistory">
+                <FaList></FaList>
+                Real Payment History
+              </NavLink>
+            </li>
           </>
         ) : (
           <>
@@ -91,6 +97,12 @@ const SideBar = () => {
               <NavLink to="/dashboard/bookings">
                 <FaList></FaList>
                 My Bookings
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/dashboard/paymentHistory">
+                <FaList></FaList>
+                Real Payment History
               </NavLink>
             </li>
           </>
